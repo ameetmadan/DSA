@@ -11,7 +11,9 @@
 ### Sorting algotihms
 
 #### Bubble sort
-
+```
+void 
+```
 #### Selection sort
 
 #### Insertion sort 
