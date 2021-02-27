@@ -142,6 +142,69 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <!--[if lt IE 9]>
@@ -161,20 +224,50 @@
 <li><strong>Testing</strong>: if all inputs deliver all necessary outputs</li>
 </ol>
 <h4 id="example-linear-search-in-pseudocode">Example: Linear search in Pseudocode</h4>
-<pre class="pseudocode"><code>                                    # Linear search last occurence
-    p = NIL;                        # Here we are defining our variable p as 0
-    for i = 1 to n do               # For the range of 1 to n in our array A
-        if A[i]==v then p=i;        # we are checking the values (v) 
-    return p;                       # If we find a value which matches our input 
-                                    # we set it equal to p and return it</code></pre>
-<pre class="pseudocode"><code>                                            # Linear search first occurence
-    i = 1;                                  # Set i to 1. While i is less
-    while i &lt;= n and A[i] != v do i++;      # or equal number of array elements
-    if i &lt;= n then return i;                # and there is no match in value
-    else return NIL;                        # with the array, keeping adding 1.
-                                            # If I is less or equal n, return n
-                                            # else return 0.</code></pre>
-<h3 id="prime-number-filter">Prime number filter</h3>
+<pre class="pseudocode"><code># Linear search last occurence
+    p = NIL;                        
+    for i = 1 to n do               
+        if A[i]==v then p=i;        
+    return p;                     </code></pre>
+<p>Here we are defining our variable p as 0. For the range of 1 to n in our array A, we are checking the values (v). If we find a value which matches our input, we set it equal to p and return it.</p>
+<pre class="pseudocode"><code># Linear search first occurence
+    i = 1;
+    while i &lt;= n and A[i] != v do i++;
+    if i &lt;= n then return i;
+    else return NIL;</code></pre>
+<p>Here we are setting i to 1. While i is less or equal number of array elements and there is no match in value with the array, keeping adding 1. If i is less or equal n, return i else return 0.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#define n 5</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i, v;</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a[] = { <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">4</span>, -<span class="dv">3</span>, <span class="dv">22</span> };</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main() {</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    i = <span class="dv">0</span>; v = -<span class="dv">2</span>;</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (i &lt; n &amp;&amp; a[i] != v) { i++; }</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i &lt; n) { printf(<span class="st">&quot;%d</span><span class="sc">\n</span><span class="st">&quot;</span>, i); }</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> { printf(<span class="st">&quot;NIL</span><span class="sc">\n</span><span class="st">&quot;</span>); }</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Here we see how we would do the linear search task with C. As visible, the pseudocode comes very close to what we write in C. Pseudcode allows us to roughly structure out our code, before we write it any language. The Java code for this algorithm is also very close to pseudocode, making it a invaluable tool for construction of algorithms.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.*;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> search <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">static</span> <span class="dt">int</span> n <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">static</span> <span class="dt">int</span> i<span class="op">,</span> v<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">static</span> <span class="dt">int</span> a<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="op">-</span><span class="dv">3</span><span class="op">,</span> <span class="dv">22</span> <span class="op">};</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span> args<span class="op">[])</span> <span class="op">{</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> v <span class="op">=</span> <span class="dv">22</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> n <span class="op">&amp;&amp;</span> a<span class="op">[</span>i<span class="op">]</span> <span class="op">!=</span> v<span class="op">)</span> <span class="op">{</span> i<span class="op">++;</span> <span class="op">}</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">&lt;</span> n<span class="op">)</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="op">{</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;NIL&quot;</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="prime-number-filter-in-pseudocode">Prime number filter in pseudocode</h3>
+<pre class="pseudocode"><code>A[0] = False; A[1] = False;
+for i = 2 to n do A[i] = True;
+for i = 2 to floor(n/2) do
+    for j = 2 to floor(n/i) do
+        A[i*j] = False;</code></pre>
+<p>This is called the <em>Sieve of Eratosthenes</em>. Here we are given an array with all numbers from 0 to i. We set the first two elements, being <code>A[0] = 0</code> and <code>A[1] = 1</code>, to False. We know that these 2 numbers are not primes. Starting from <code>i = 2</code>, we set all the other elements to True. We then divide our number of array elements by 2 using <code>(floor(n/2))</code> - the floor function rounds the float to an integer.</p>
 <h3 id="sorting-algotihms">Sorting algotihms</h3>
 <h4 id="bubble-sort">Bubble sort</h4>
 <h4 id="selection-sort">Selection sort</h4>
