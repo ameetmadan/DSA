@@ -16,20 +16,22 @@ The development of an algorithm has four crucial steps:
 #### Example: Linear search in Pseudocode
 
 ```Pseudocode
-# Linear search last occurence
-    p = NIL;
-    for i = 1 to n do
-        if A[i]==v then p=i;
-    return p;
+                                    # Linear search last occurence
+    p = NIL;                        # Here we are defining our variable p as 0
+    for i = 1 to n do               # For the range of 1 to n in our array A
+        if A[i]==v then p=i;        # we are checking the values (v) 
+    return p;                       # If we find a value which matches our input 
+                                    # we set it equal to p and return it
 ```
 
-
 ```Pseudocode
-# Linear search first occurence
-    i = 1;
-    while i less or equal n and A[i] not equal v do i++;
-    if i less or equal n then return i;
-    else return NIL;
+                                            # Linear search first occurence
+    i = 1;                                  # Set i to 1. While i is less
+    while i <= n and A[i] != v do i++;      # or equal number of array elements
+    if i <= n then return i;                # and there is no match in value
+    else return NIL;                        # with the array, keeping adding 1.
+                                            # If I is less or equal n, return n
+                                            # else return 0.
 ```
 
 ### Prime number filter

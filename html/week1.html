@@ -161,16 +161,19 @@
 <li><strong>Testing</strong>: if all inputs deliver all necessary outputs</li>
 </ol>
 <h4 id="example-linear-search-in-pseudocode">Example: Linear search in Pseudocode</h4>
-<pre class="pseudocode"><code># Linear search last occurence
-    p = NIL;
-    for i = 1 to n do
-        if A[i]==v then p=i;
-    return p;</code></pre>
-<pre class="pseudocode"><code># Linear search first occurence
-    i = 1;
-    while i less or equal n and A[i] not equal v do i++;
-    if i less or equal n then return i;
-    else return NIL;</code></pre>
+<pre class="pseudocode"><code>                                    # Linear search last occurence
+    p = NIL;                        # Here we are defining our variable p as 0
+    for i = 1 to n do               # For the range of 1 to n in our array A
+        if A[i]==v then p=i;        # we are checking the values (v) 
+    return p;                       # If we find a value which matches our input 
+                                    # we set it equal to p and return it</code></pre>
+<pre class="pseudocode"><code>                                            # Linear search first occurence
+    i = 1;                                  # Set i to 1. While i is less
+    while i &lt;= n and A[i] != v do i++;      # or equal number of array elements
+    if i &lt;= n then return i;                # and there is no match in value
+    else return NIL;                        # with the array, keeping adding 1.
+                                            # If I is less or equal n, return n
+                                            # else return 0.</code></pre>
 <h3 id="prime-number-filter">Prime number filter</h3>
 <h3 id="sorting-algotihms">Sorting algotihms</h3>
 <h4 id="bubble-sort">Bubble sort</h4>
