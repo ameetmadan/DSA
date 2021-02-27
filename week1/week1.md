@@ -74,7 +74,7 @@ for i = 2 to floor(n/2) do
     for j = 2 to floor(n/i) do
         A[i*j] = False;
 ```
-This is called the *Sieve of Eratosthenes*. Here we are given an array with all numbers from 0 to i. We set the first two elements, being ```A[0] = 0``` and ```A[1] = 1```, to False. We know that these 2 numbers are not primes. Starting from ```i = 2```, we set all the other elements to True. We then divide our number of array elements by 2 using ```(floor(n/2))``` - the floor function rounds the float to an integer. 
+This is called the *Sieve of Eratosthenes*. Here we are given an array with all numbers from 0 to i. We set the first two elements, being ```A[0] = 0``` and ```A[1] = 1```, to False. We know that these 2 numbers are not primes. Starting from ```i = 2```, we set all the other elements to True. We then divide our number of array elements by 2 using ```(floor(n/2))``` - the floor function rounds the float to an integer. What we then do is check which of the remaining elements we have in our array are possible to reached as a multiple ```A[i*j]``` of our elements i and j. [Here](https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif) we can see how this happens . 
 
 
 ### Sorting algotihms

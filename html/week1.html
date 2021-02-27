@@ -267,7 +267,7 @@ for i = 2 to n do A[i] = True;
 for i = 2 to floor(n/2) do
     for j = 2 to floor(n/i) do
         A[i*j] = False;</code></pre>
-<p>This is called the <em>Sieve of Eratosthenes</em>. Here we are given an array with all numbers from 0 to i. We set the first two elements, being <code>A[0] = 0</code> and <code>A[1] = 1</code>, to False. We know that these 2 numbers are not primes. Starting from <code>i = 2</code>, we set all the other elements to True. We then divide our number of array elements by 2 using <code>(floor(n/2))</code> - the floor function rounds the float to an integer.</p>
+<p>This is called the <em>Sieve of Eratosthenes</em>. Here we are given an array with all numbers from 0 to i. We set the first two elements, being <code>A[0] = 0</code> and <code>A[1] = 1</code>, to False. We know that these 2 numbers are not primes. Starting from <code>i = 2</code>, we set all the other elements to True. We then divide our number of array elements by 2 using <code>(floor(n/2))</code> - the floor function rounds the float to an integer. What we then do is check which of the remaining elements we have in our array are possible to reached as a multiple <code>A[i*j]</code> of our elements i and j. <a href="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif">Here</a> we can see how this happens .</p>
 <h3 id="sorting-algotihms">Sorting algotihms</h3>
 <h4 id="bubble-sort">Bubble sort</h4>
 <h4 id="selection-sort">Selection sort</h4>
