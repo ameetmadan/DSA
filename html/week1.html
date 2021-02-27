@@ -237,17 +237,15 @@
     else return NIL;</code></pre>
 <p>Here we are setting i to 1. While i is less or equal number of array elements and there is no match in value with the array, keeping adding 1. If i is less or equal n, return i else return 0.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#define n 5</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i, v;</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a[] = { <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">4</span>, -<span class="dv">3</span>, <span class="dv">22</span> };</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main() {</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    i = <span class="dv">0</span>; v = -<span class="dv">2</span>;</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (i &lt; n &amp;&amp; a[i] != v) { i++; }</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i &lt; n) { printf(<span class="st">&quot;%d</span><span class="sc">\n</span><span class="st">&quot;</span>, i); }</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> { printf(<span class="st">&quot;NIL</span><span class="sc">\n</span><span class="st">&quot;</span>); }</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define n 5</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> i, v;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a[] = { <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">4</span>, -<span class="dv">3</span>, <span class="dv">22</span> };</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main() {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    i = <span class="dv">0</span>; v = -<span class="dv">2</span>;</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (i &lt; n &amp;&amp; a[i] != v) { i++; }</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i &lt; n) { printf(<span class="st">&quot;%d</span><span class="sc">\n</span><span class="st">&quot;</span>, i); }</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> { printf(<span class="st">&quot;NIL</span><span class="sc">\n</span><span class="st">&quot;</span>); }</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Here we see how we would do the linear search task with C. As visible, the pseudocode comes very close to what we write in C. Pseudcode allows us to roughly structure out our code, before we write it any language. The Java code for this algorithm is also very close to pseudocode, making it a invaluable tool for construction of algorithms.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.*;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> search <span class="op">{</span></span>
@@ -267,8 +265,9 @@ for i = 2 to n do A[i] = True;
 for i = 2 to floor(n/2) do
     for j = 2 to floor(n/i) do
         A[i*j] = False;</code></pre>
-<p>This is called the <em>Sieve of Eratosthenes</em>. Here we are given an array with all numbers from 0 to i. We set the first two elements, being <code>A[0] = 0</code> and <code>A[1] = 1</code>, to False. We know that these 2 numbers are not primes. Starting from <code>i = 2</code>, we set all the other elements to True. We then divide our number of array elements by 2 using <code>(floor(n/2))</code> - the floor function rounds the float to an integer. What we then do is check which of the remaining elements we have in our array are possible to reached as a multiple <code>A[i*j]</code> of our elements i and j. <a href="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif">Here</a> we can see how this happens .</p>
+<p>This is called the <em>Sieve of Eratosthenes</em>. Here we are given an array with all numbers from 0 to i. We set the first two elements, being <code>A[0] = 0</code> and <code>A[1] = 1</code>, to False. We know that these 2 numbers are not primes. Starting from <code>i = 2</code>, we set all the other elements to True. We then divide our number of array elements by 2 using <code>(floor(n/2))</code> - the floor function rounds the float to an integer. What we then do is check which of the remaining elements we have in our array are possible to reached as a multiple <code>A[i*j]</code> of our elements i and j. <a href="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif">Here</a> we can see how this happens.</p>
 <h3 id="sorting-algotihms">Sorting algotihms</h3>
+<p>Sorting is one of the most fundamental parts of algorithmic design. It is often used as a subalgorithm in bigger algorithms. We measure the efficiency and time complexity of an algorithm in 2 different methods: number of comparisons and number of exchange operations.</p>
 <h4 id="bubble-sort">Bubble sort</h4>
 <h4 id="selection-sort">Selection sort</h4>
 <h4 id="insertion-sort">Insertion sort</h4>
