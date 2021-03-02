@@ -269,6 +269,30 @@ for i = 2 to floor(n/2) do
 <h3 id="sorting-algotihms">Sorting algotihms</h3>
 <p>Sorting is one of the most fundamental parts of algorithmic design. It is often used as a subalgorithm in bigger algorithms. We measure the efficiency and time complexity of an algorithm in 2 different methods: number of comparisons and number of exchange operations.</p>
 <h4 id="bubble-sort">Bubble sort</h4>
+<pre><code>for i = n to 2 do
+    for j = 2 to i do
+        if A[j] &lt; A[j-1] then
+            t = A[j];
+            A[j] = A[j-1];
+            A[j-1] = t;</code></pre>
+<p>In bubble sort, what we do is compare a number and it’s neighbour to check if the number has already reached is right place or not. In the pseudcode algorithm we have 3 loops. The first loop <code>i=n</code> tells us how many elements our array has and iterates over the whole array. The second loop tells us to start the comparison between the first and second element and keep it going until the last element of the array, because of (i=n). The third loop is where the sorting actually happens. The three-step “formula” we see here is called the swap. In future algorithms, it will be reffered to as swap. As an example fo this algortihm: <code>swap(A[j], A[j-1])</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> bubblesort(<span class="dt">int</span> *array, <span class="dt">int</span> length)  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">int</span> i, j, tmp;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span> (i = <span class="dv">1</span>; i &lt; length; i++)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (j = <span class="dv">0</span>; j &lt; length - <span class="dv">1</span> ; j++) </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (array[j] &gt; array[j + <span class="dv">1</span>]) </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>          {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>              tmp = array[j];</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>              array[j] = array[j + <span class="dv">1</span>];</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>              array[j + <span class="dv">1</span>] = tmp;</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h4 id="selection-sort">Selection sort</h4>
 <h4 id="insertion-sort">Insertion sort</h4>
 </body>

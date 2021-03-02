@@ -82,6 +82,39 @@ Sorting is one of the most fundamental parts of algorithmic design. It is often 
 
 #### Bubble sort
 
+```
+for i = n to 2 do
+    for j = 2 to i do
+        if A[j] < A[j-1] then
+            t = A[j];
+            A[j] = A[j-1];
+            A[j-1] = t;
+```
+
+In bubble sort, what we do is compare a number and it's neighbour to check if the number has already reached is right place or not.  In the pseudcode algorithm we have 3 loops. The first loop ```i=n``` tells us how many elements our array has and iterates over the whole array. The second loop tells us to start the comparison between the first and second element and keep it going until the last element of the array, because of (i=n). The third loop is where the sorting actually happens. The three-step "formula" we see here is called the swap. In future algorithms, it will be reffered to as swap. As an example fo this algortihm: ```swap(A[j], A[j-1])```
+
+```C
+void bubblesort(int *array, int length)  
+{
+   int i, j, tmp;
+
+   for (i = 1; i < length; i++)
+   {
+      for (j = 0; j < length - 1 ; j++) 
+      {
+          if (array[j] > array[j + 1]) 
+          {
+              tmp = array[j];
+              array[j] = array[j + 1];
+              array[j + 1] = tmp;
+          }
+      }
+   }
+}
+```
+\newpage
+
 #### Selection sort
 
 #### Insertion sort
+
