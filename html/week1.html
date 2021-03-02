@@ -294,6 +294,53 @@ for i = 2 to floor(n/2) do
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>   }</span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h4 id="selection-sort">Selection sort</h4>
+<pre><code>for i = 1 to n-1 do
+    k=1;
+    for j=i+1 to n do
+        if A[j] &lt; A[k] then k = j;
+    swap(A[j], A[k])</code></pre>
+<p>Selection sort finds the minimum element of the array and places it at the first place. It then condtinues through the array searching for the smallest elements and places it at the respective spot. In pseudocode, we ask our algorithm to loop from 1 to n-1 (the last element is already sorted once we sort the rest of the array) and set k at first place. This k is generally the smallest element in our array. We then compare the next element with our smallest element k and if the new element j is smaller than k, we set it as our new k.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> selectionSort(<span class="dt">int</span> arr[], <span class="dt">int</span> n) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>{ </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i, j, min_idx; </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// One by one move boundary of unsorted subarray </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i = <span class="dv">0</span>; i &lt; n-<span class="dv">1</span>; i++) </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    { </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Find the minimum element in unsorted array </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        min_idx = i; </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (j = i+<span class="dv">1</span>; j &lt; n; j++) </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> (arr[j] &lt; arr[min_idx]) </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            min_idx = j; </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Swap the found minimum element with the first element </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        swap(&amp;arr[min_idx], &amp;arr[i]); </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    } </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>} </span></code></pre></div>
 <h4 id="insertion-sort">Insertion sort</h4>
+<pre><code>for i = 2 to n do
+    j=i-1;
+    t=A[i];
+    while j &gt;= 1 and t &lt; A[j] do
+        A[j+1] = A[j];
+        j = j-1;
+    A[j+1] = t;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> insertionSort(<span class="dt">int</span> arr[], <span class="dt">int</span> n)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i, key, j;</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i = <span class="dv">1</span>; i &lt; n; i++) {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        key = arr[i];</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        j = i - <span class="dv">1</span>;</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* Move elements of arr[0..i-1], that are</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">          greater than key, to one position ahead</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">          of their current position */</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> (j &gt;= <span class="dv">0</span> &amp;&amp; arr[j] &gt; key) {</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>            arr[j + <span class="dv">1</span>] = arr[j];</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>            j = j - <span class="dv">1</span>;</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        arr[j + <span class="dv">1</span>] = key;</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </body>
 </html>

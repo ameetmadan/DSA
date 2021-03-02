@@ -116,5 +116,66 @@ void bubblesort(int *array, int length)
 
 #### Selection sort
 
+```
+for i = 1 to n-1 do
+    k=1;
+    for j=i+1 to n do
+        if A[j] < A[k] then k = j;
+    swap(A[j], A[k])
+```
+Selection sort finds the minimum element of the array and places it at the first place. It then condtinues through the array searching for the smallest elements and places it at the respective spot. In pseudocode, we ask our algorithm to loop from 1 to n-1 (the last element is already sorted once we sort the rest of the array) and set k at first place. This k is generally the smallest element in our array. We then compare the next element with our smallest element k and if the new element j is smaller than k, we set it as our new k.
+
+```C
+void selectionSort(int arr[], int n) 
+{ 
+    int i, j, min_idx; 
+  
+    // One by one move boundary of unsorted subarray 
+    for (i = 0; i < n-1; i++) 
+    { 
+        // Find the minimum element in unsorted array 
+        min_idx = i; 
+        for (j = i+1; j < n; j++) 
+          if (arr[j] < arr[min_idx]) 
+            min_idx = j; 
+  
+        // Swap the found minimum element with the first element 
+        swap(&arr[min_idx], &arr[i]); 
+    } 
+} 
+```
+\newpage
+
 #### Insertion sort
 
+```
+for i = 2 to n do
+    j=i-1;
+    t=A[i];
+    while j >= 1 and t < A[j] do
+        A[j+1] = A[j];
+        j = j-1;
+    A[j+1] = t;
+```
+
+
+
+```C
+void insertionSort(int arr[], int n)
+{
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = arr[i];
+        j = i - 1;
+ 
+        /* Move elements of arr[0..i-1], that are
+          greater than key, to one position ahead
+          of their current position */
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+```
