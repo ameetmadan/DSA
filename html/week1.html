@@ -325,22 +325,47 @@ for i = 2 to floor(n/2) do
         A[j+1] = A[j];
         j = j-1;
     A[j+1] = t;</code></pre>
+<p>We start with an array of A[n] elements. What then happens is that we define 3 variables: i, key and j. i is our iterator through the array. It keeps track if or if not we are in bounds (i &lt; n). The variable key lets us keep track of which element we are sorting at the moment. The variable j is <code>i-1</code> letting us keep track of the variable right before i. So here we will be looking at 2 elements together. Our condition <code>while (j &gt;= 0 &amp;&amp; arr[j] &gt; key)</code> lets us iterate over the array while j is not 0, which would make it out of bounds of our array and j is greater than our variable key. We then set our array element <code>a[j+1]</code> equal to <code>a[j]</code> and move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> insertionSort(<span class="dt">int</span> arr[], <span class="dt">int</span> n)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> i, key, j;</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i = <span class="dv">1</span>; i &lt; n; i++) {</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        key = arr[i];</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        j = i - <span class="dv">1</span>;</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">/* Move elements of arr[0..i-1], that are</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">          greater than key, to one position ahead</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">          of their current position */</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> (j &gt;= <span class="dv">0</span> &amp;&amp; arr[j] &gt; key) {</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>            arr[j + <span class="dv">1</span>] = arr[j];</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>            j = j - <span class="dv">1</span>;</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        arr[j + <span class="dv">1</span>] = key;</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> (j &gt;= <span class="dv">0</span> &amp;&amp; arr[j] &gt; key) {</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            arr[j + <span class="dv">1</span>] = arr[j];</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            j = j - <span class="dv">1</span>;</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        arr[j + <span class="dv">1</span>] = key;</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="recursion-algotihms">Recursion algotihms</h3>
+<ul>
+<li>recursive object: it contains itself and is defined in terms of itself</li>
+<li>reursive procedure: recalling the procedure multiple times and having a termination condition</li>
+<li>multiple recursion: keep recalling the function inside itself</li>
+<li>mutual recursion: 2 functions (e.g. odd(n) and even(n) who define themself be calling each other)</li>
+</ul>
+<h4 id="fibonacci-numbers">Fibonacci numbers</h4>
+<p>The way the fibonacci numbers work is quite tricky. Lets see the first steps of the recursion to better understand the pattern:</p>
+<ol type="1">
+<li>Calculate fib(0) = 0</li>
+<li>Calculate fib(1) = 1</li>
+<li>Calculate fib(2) = fib(0) + fib (1) = 1</li>
+<li>Calculate fib(3) = fib(2) + fib(1)</li>
+<li>Calculate fib(4) = fib(3) + fib(2)</li>
+</ol>
+<p>The next number is always a caluclation derived from the previous 2 numbers allowing us to recursively call the function fib(n) again and again to calculate the next step.</p>
+<p><a href="https://www.tutorialspoint.com/data_structures_algorithms/fibonacci_recursive_program_in_c.htm">Coded in C</a></p>
+<h4 id="odd-and-even-numbers">Odd and even numbers</h4>
+<p>This is an example of mutual recursion where the functions call each other to get the necessary value</p>
+<p><code>odd(n) = false if n = 0, even(n-1) if n &gt; 0</code> <code>even(n) = true if n = 0, odd(n-1) if n &gt; 0</code></p>
+<h4 id="drawing-figures-with-recursion">Drawing figures with recursion</h4>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/sierpinski-triangle/">Sierperinski triangle</a></li>
+<li><a href="https://rosettacode.org/wiki/Hilbert_curve#C.2B.2B">Hilbert curve</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sierpiński_curve">Sieperinski curve</a></li>
+</ul>
 </body>
 </html>

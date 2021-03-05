@@ -158,7 +158,7 @@ for i = 2 to n do
     A[j+1] = t;
 ```
 
-
+We start with an array of A[n] elements. What then happens is that we define 3 variables: i, key and j. i is our iterator through the array. It keeps track if or if not we are in bounds (i < n). The variable key lets us keep track of which element we are sorting at the moment. The variable j is ```i-1``` letting us keep track of the variable right before i. So here we will be looking at 2 elements together. Our condition ```while (j >= 0 && arr[j] > key)``` lets us iterate over the array while j is not 0, which would make it out of bounds of our array and j is greater than our variable key. We then set our array element ```a[j+1]``` equal to ```a[j]``` and move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position.
 
 ```C
 void insertionSort(int arr[], int n)
@@ -167,10 +167,7 @@ void insertionSort(int arr[], int n)
     for (i = 1; i < n; i++) {
         key = arr[i];
         j = i - 1;
- 
-        /* Move elements of arr[0..i-1], that are
-          greater than key, to one position ahead
-          of their current position */
+
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j = j - 1;
@@ -179,3 +176,37 @@ void insertionSort(int arr[], int n)
     }
 }
 ```
+\newpage
+
+### Recursion algotihms
+
+- recursive object: it contains itself and is defined in terms of itself
+- reursive procedure: recalling the procedure multiple times and having a termination condition
+- multiple recursion: keep recalling the function inside itself
+- mutual recursion: 2 functions (e.g. odd(n) and even(n) who define themself be calling each other)
+
+#### Fibonacci numbers
+
+The way the fibonacci numbers work is quite tricky. Lets see the first steps of the recursion to better understand the pattern:
+
+1. Calculate fib(0) = 0
+2. Calculate fib(1) = 1
+3. Calculate fib(2) = fib(0) + fib (1) = 1
+4. Calculate fib(3) = fib(2) + fib(1)
+5. Calculate fib(4) = fib(3) + fib(2)
+
+The next number is always a caluclation derived from the previous 2 numbers allowing us to recursively call the function fib(n) again and again to calculate the next step.
+
+[Coded in C](https://www.tutorialspoint.com/data_structures_algorithms/fibonacci_recursive_program_in_c.htm)
+
+#### Odd and even numbers 
+
+This is an example of mutual recursion where the functions call each other to get the necessary value
+
+```odd(n) = false if n = 0, even(n-1) if n > 0``` ```even(n) = true if n = 0, odd(n-1) if n > 0```
+
+#### Drawing figures with recursion
+
+- [Sierperinski triangle](https://www.geeksforgeeks.org/sierpinski-triangle/)
+- [Hilbert curve](https://rosettacode.org/wiki/Hilbert_curve#C.2B.2B)
+- [Sieperinski curve](https://en.wikipedia.org/wiki/Sierpiński_curve)

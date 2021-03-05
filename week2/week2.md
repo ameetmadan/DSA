@@ -1,3 +1,7 @@
-# Algorithms
+# Algortihmic complexity
 
-### Recursion
+# Correctness
+
+# Asymptotic complexity
+
+# Special case analysis
