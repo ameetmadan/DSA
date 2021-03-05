@@ -197,16 +197,18 @@ The way the fibonacci numbers work is quite tricky. Lets see the first steps of 
 
 The next number is always a caluclation derived from the previous 2 numbers allowing us to recursively call the function fib(n) again and again to calculate the next step.
 
-[Coded in C](https://www.tutorialspoint.com/data_structures_algorithms/fibonacci_recursive_program_in_c.htm)
+[Link: Coded in C](https://www.tutorialspoint.com/data_structures_algorithms/fibonacci_recursive_program_in_c.htm)
 
 #### Odd and even numbers 
 
 This is an example of mutual recursion where the functions call each other to get the necessary value
 
-```odd(n) = false if n = 0, even(n-1) if n > 0``` ```even(n) = true if n = 0, odd(n-1) if n > 0```
+```odd(n) = false if n = 0, even(n-1) if n > 0```
+
+```even(n) = true if n = 0, odd(n-1) if n > 0```
 
 #### Drawing figures with recursion
 
-- [Sierperinski triangle](https://www.geeksforgeeks.org/sierpinski-triangle/)
-- [Hilbert curve](https://rosettacode.org/wiki/Hilbert_curve#C.2B.2B)
-- [Sieperinski curve](https://en.wikipedia.org/wiki/Sierpiński_curve)
+- [Link: Sierperinski triangle](https://www.geeksforgeeks.org/sierpinski-triangle/)
+- [Link: Hilbert curve](https://rosettacode.org/wiki/Hilbert_curve#C.2B.2B)
+- [Link: Sieperinski curve](https://en.wikipedia.org/wiki/Sierpiński_curve)
