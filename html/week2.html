@@ -154,7 +154,26 @@
 <ul>
 <li>Time complexity: running time of the algorithm</li>
 <li>Space complexity: how much memory is it using</li>
+<li>Size of input data: number of items, number of bits</li>
 </ul>
+<h3 id="random-access-machine">Random access machine</h3>
+<ul>
+<li>Arithmetic: addition, subtraction, multiplication</li>
+<li>Control: branch, subroutine call, return</li>
+<li>Data movement: load, store, copy</li>
+<li>data types: char, integer and floating point (decimal)</li>
+</ul>
+<h3 id="analysis-of-insertion-sort">Analysis of insertion sort</h3>
+<pre><code>for i=2 to n do
+    j = i-1;
+    t = A[i];
+    while j&gt;0 · t&lt;A[j] do
+        A[j+1] = A[j];
+        j = j-1;
+    A[j+1] = t;</code></pre>
+<p>Execution of a line costs time. Each line has a cost of <span class="math inline">$\textbf c$</span>. This cost is multiplied by as many elements have to be processed by the algorithm. Inside loops, we use the notation <span class="math inline">$\textbf t_i$</span>. The sum of all multiplications between <span class="math inline"><em>c</em></span>, <span class="math inline"><em>n</em></span> and <span class="math inline"><em>t</em><sub><em>i</em></sub></span> gives as the exact running time of insertion sort.</p>
+<h3 id="best-worst-and-average-case">Best, worst and average case</h3>
+<p>Considering insertion sort, our best case option is that the array is already sorted. <span class="math inline"><em>t</em><sub><em>i</em></sub> = 1</span> <span class="math display"><em>T</em>(<em>n</em>) = <em>c</em><sub>1</sub><em>n</em> + (<em>c</em><sub>2</sub> + <em>c</em><sub>3</sub> + <em>c</em><sub>4</sub> + <em>c</em><sub>7</sub>)(<em>n</em> − 1) = <em>a</em><em>n</em> + <em>b</em></span></p>
 <h1 id="correctness">Correctness</h1>
 <h1 id="asymptotic-complexity">Asymptotic complexity</h1>
 <h1 id="special-case-analysis">Special case analysis</h1>
