@@ -173,9 +173,67 @@
     A[j+1] = t;</code></pre>
 <p>Execution of a line costs time. Each line has a cost of <span class="math inline">$\textbf c$</span>. This cost is multiplied by as many elements have to be processed by the algorithm. Inside loops, we use the notation <span class="math inline">$\textbf t_i$</span>. The sum of all multiplications between <span class="math inline"><em>c</em></span>, <span class="math inline"><em>n</em></span> and <span class="math inline"><em>t</em><sub><em>i</em></sub></span> gives as the exact running time of insertion sort.</p>
 <h3 id="best-worst-and-average-case">Best, worst and average case</h3>
-<p>Considering insertion sort, our best case option is that the array is already sorted. <span class="math inline"><em>t</em><sub><em>i</em></sub> = 1</span> <span class="math display"><em>T</em>(<em>n</em>) = <em>c</em><sub>1</sub><em>n</em> + (<em>c</em><sub>2</sub> + <em>c</em><sub>3</sub> + <em>c</em><sub>4</sub> + <em>c</em><sub>7</sub>)(<em>n</em> − 1) = <em>a</em><em>n</em> + <em>b</em></span></p>
+<p>Considering insertion sort, our best case option is that the array is already sorted: <span class="math inline"><em>t</em><sub><em>i</em></sub> = 1</span> <span class="math display"><em>T</em>(<em>n</em>) = <em>c</em><sub>1</sub><em>n</em> + (<em>c</em><sub>2</sub> + <em>c</em><sub>3</sub> + <em>c</em><sub>4</sub> + <em>c</em><sub>7</sub>)(<em>n</em> − 1) = <em>a</em><em>n</em> + <em>b</em></span></p>
+<p>In the worst case, our array is reverse sorted: <span class="math inline"><em>t</em><sub><em>i</em></sub> = <em>i</em></span> <span class="math display">$$ T(n) = c_1n + (c_2 + c_3 + c_7) + c_4(\frac{n(n+1)}{2} - 1) + (c_5 + c_6) \frac{(n-1)n}{2} = an^2 + bn + c$$</span></p>
+<p>We usually focus on the worst case running time, due to following reasons:</p>
+<ul>
+<li>It guaranted to not take longer</li>
+<li>It occurs fairly often</li>
+<li>The average case is often close to the worst case</li>
+</ul>
+<h3 id="example-binary-search">Example: Binary search</h3>
+<pre><code>i = 1;
+while &lt;= n and A[i] != v do i = i+1;
+if i &lt;= n then return i else return NIL;</code></pre>
+<ul>
+<li>Worst case: <span class="math inline"><em>n</em></span> (The element we are looking for is at the end of the array <span class="math inline"><em>A</em>[1..<em>n</em>]</span>)</li>
+<li>Average case: <span class="math inline"><em>n</em>/2</span></li>
+<li>Best case: 0 (The element is not in the array)</li>
+</ul>
 <h1 id="correctness">Correctness</h1>
+<p>An algorithm is correct when:</p>
+<ul>
+<li>it produces the desired output for any legal input (partial correctness)</li>
+<li>it terminates (total correctness)</li>
+<li>Assertion: statement about the state before execution of the algorithm</li>
+<li>Preconditions: assertion about the input, must be valid before execution</li>
+<li>Postconditions: assertion about the output, must be valid after execution</li>
+</ul>
+<h3 id="loop-invariants">Loop invariants</h3>
+<ul>
+<li>Intialization: true before first iteration</li>
+<li>Maintainence: true before an iteration and then true after iteration</li>
+<li>Termination: show that algorithm is correct</li>
+</ul>
+<p>### Example: sorting</p>
+<pre><code>// Input: an array A storing n integers
+// Output: the same array with the elements sorted
+in ascending order
+// Invariant: A[0..j-1] contains the same elements 
+as the original subarray A[0..j-1], but in sorted order.
+
+for j = 1 to n-1
+        key ← A[j]
+        i ← j - 1
+        while i &gt;= 0 and A[i] &gt; key
+            A[i+1] ← A[i]
+            i ← i - 1
+        A[i+1] ← key</code></pre>
+<p>Let’s look at the <strong>initialization</strong> property. We can assume that the slice contains at least two elements since the loop wouldn’t execute otherwise. (Nor is this needed since a slice with at most one element is sorted already.) Before executing the loop, the invariant states “A[0..0] contains the same elements as the original subarray A[0..0], but in sorted order”. This is clearly true.</p>
+<p>To verify the <strong>maintenance</strong> property, we need to take a closer look at the code. We can assume that the invariant holds before the loop, i.e. A[0..j-1] is sorted, and only need to check that the code inserts the element A[j] in the correct position. This is achieved by moving all elements A[j-1], A[j-2],… larger than A[j] one step to the right and then inserting A[j] in its proper position.</p>
+<p>To achieve the <strong>termination</strong> property, the invariant should state that the array is sorted when the for loop terminates. Check.</p>
+<p>Check <a href="https://www.geeksforgeeks.org/loop-invariant-condition-examples-sorting-algorithms/">here</a> for more.</p>
 <h1 id="asymptotic-complexity">Asymptotic complexity</h1>
+<p>Asymptotic complexity helps us find out how the running time increases, with the size of the input.</p>
+<ul>
+<li>Big <span class="math inline"><em>O</em></span> notation: Upper bound, used for worst case analysis.</li>
+<li>Big <span class="math inline"><em>Ω</em></span> notation: Lower bound, used for best-case analysis</li>
+<li>Big <span class="math inline"><em>Θ</em></span> notation: Tight bound (range between upper and lower bound), used for average-case analysis</li>
+</ul>
+<p><img src="7b9bc55588e83b126d44df0cedf7cd4c4527c73fd684d13565922f5399d1d483.png" /></p>
+<p><img src="33aad5b1c61e0badc312197b75beb2dbd445f9611c6ef19d55f052224d246b53.png" /></p>
+<p>Check <a href="https://www.bigocheatsheet.com">here</a> for more.</p>
+<p>TODO: Add one-pager summaries for all algorithms showing their strengths and weaknesses, visual representation, optimized usage, big O analysis, code representation with links to HackerRank exercises.</p>
 <h1 id="special-case-analysis">Special case analysis</h1>
 </body>
 </html>
