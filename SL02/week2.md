@@ -108,11 +108,25 @@ Asymptotic complexity helps us find out how the running time increases, with the
 
 Check [here](https://www.bigocheatsheet.com) for more.
 
-TODO: Add one-pager summaries for all algorithms showing their strengths and weaknesses, visual representation, optimized usage, big O analysis, code representation with links to HackerRank exercises.
+*TODO: Add one-pager summaries for all algorithms showing their strengths and weaknesses, visual representation, optimized usage, big O analysis, code representation with links to HackerRank exercises.*
 
 ### Logarithmic rules
 
-
-
+- $log_a(bc) = log_a b + log_a c$
+- $log_a b = \frac{log_c b}{log_c a}$
+- $log_a b^c = c ⋅ log_a b$
+- $a^ma^n = a^{m+n}$
+- $a^{log_a b} = b$
+- $lg b = ldb =log_2 b$
+- $log_a b = ^alog b$
 
 # Special case analysis
+
+- Data structure (array, list, file, etc.)
+  - Empty, single element, completely filled
+- Particular values, border of domain
+  - Zero, empty string, negative numbers, etc.
+- Calling of functions (procedures)
+  - Entering function, termination of function
+- Control and loop statements
+  - Start of loop, end of loop, 1st iteration
