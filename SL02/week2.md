@@ -108,6 +108,8 @@ Asymptotic complexity helps us find out how the running time increases, with the
 
 Check [here](https://www.bigocheatsheet.com) for more.
 
+TODO: Check Abdul Bari videos
+
 *TODO: Add one-pager summaries for all algorithms showing their strengths and weaknesses, visual representation, optimized usage, big O analysis, code representation with links to HackerRank exercises.*
 
 ### Logarithmic rules
