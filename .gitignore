@@ -1,1 +1,4 @@
 *.png
+.vscode
+tempCodeRunnerFile
+tempCodeRunnerFile.c
