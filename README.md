@@ -11,3 +11,17 @@ My coursework for the "Informatics II" (Data Structures and Algorithms) course a
 - Dynamic programming (chap 15 in CLRS)
 - Graph algorithms (chap 22, 23, 24 in CLRS)
 
+SL01
+- [Algorithms](#algorithms)
+    - [What is an algorithm?](#what-is-an-algorithm)
+    - [How to develop an algortihm?](#how-to-develop-an-algortihm)
+      - [Example: Linear search in Pseudocode](#example-linear-search-in-pseudocode)
+    - [Prime number filter in pseudocode](#prime-number-filter-in-pseudocode)
+    - [Sorting algotihms](#sorting-algotihms)
+      - [Bubble sort](#bubble-sort)
+      - [Selection sort](#selection-sort)
+      - [Insertion sort](#insertion-sort)
+    - [Recursion algotihms](#recursion-algotihms)
+      - [Fibonacci numbers](#fibonacci-numbers)
+      - [Odd and even numbers](#odd-and-even-numbers)
+      - [Drawing figures with recursion](#drawing-figures-with-recursion)
