@@ -4,7 +4,7 @@ Divide and conquer has 3 central steps
 
 - Divide into subproblems
 - Concquer subproblems with recursive solution
-- Combine solution of subproblems into solution for the original problem.
+- Combine solution of subproblems into solution for the original problem
 
 ## Merge sort
 
@@ -14,7 +14,21 @@ Divide and conquer has 3 central steps
 
 ![](d3effe671f3b0094cb6cd137087b75c687412e14c4f99a57c06de3c90a7348e0.png){ width=350px }
 
-TODO: Add Abdul Bari Merge sort video summary here
+
+```
+Algorithm MergeSort(l, h)
+{
+    if(l<h)
+    {
+        mid = (l+h)/2;
+        MergeSort(l, mid)
+        MergeSort(mid + 1, h)
+        Merge(l, mid, h)
+    }
+}
+```
+
+Time complexity for Merge Sort is $\Theta (n\log{}n)$. The logic behind this is determined from the recursion calls. With 8 elements split into "groups" of 2 elements each, we have 3 levels, where a merge happens $(2^3 = 8)$.
 
 # Reccurences
 
