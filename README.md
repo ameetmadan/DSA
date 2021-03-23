@@ -25,3 +25,26 @@ SL01
       - [Fibonacci numbers](#fibonacci-numbers)
       - [Odd and even numbers](#odd-and-even-numbers)
       - [Drawing figures with recursion](#drawing-figures-with-recursion)
+
+SL02
+- [Algortihmic complexity](#algortihmic-complexity)
+    - [How do we define what degree of complexity an algortihm has?](#how-do-we-define-what-degree-of-complexity-an-algortihm-has)
+    - [Random access machine](#random-access-machine)
+    - [Analysis of insertion sort](#analysis-of-insertion-sort)
+    - [Best, worst and average case](#best-worst-and-average-case)
+    - [Example: Binary search](#example-binary-search)
+- [Correctness](#correctness)
+    - [Loop invariants](#loop-invariants)
+- [Asymptotic complexity](#asymptotic-complexity)
+    - [Logarithmic rules](#logarithmic-rules)
+- [Special case analysis](#special-case-analysis)
+
+SL03
+- [Divide and conquer](#divide-and-conquer)
+- [Reccurences](#reccurences)
+  - [Repeated substitution](#repeated-substitution)
+  - [Substitution method](#substitution-method)
+  - [Recursion trees](#recursion-trees)
+- [Master method](#master-method)
+  - [Decreasing recurrences](#decreasing-recurrences)
+  - [Case 1, 2 and 3](#case-1-2-and-3)
