@@ -27,9 +27,9 @@ The running times of algorithms with recursive calls can be described using recu
 
 ## Repeated substitution
 
-## Substituion method
+## Substitution method
 
-## Recursion trees
+## Recursion trees
 
 ## Master method
 
