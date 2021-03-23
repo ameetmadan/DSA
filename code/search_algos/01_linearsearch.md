@@ -8,10 +8,10 @@
 
 ## Visual representation
 
-## Optimized usage
+## Optimized usage
 
-## Asymptotic complexity
+## Asymptotic complexity
 
-## Code explaination
+## Code explaination
 
 ## LeetCode and HackerRank
