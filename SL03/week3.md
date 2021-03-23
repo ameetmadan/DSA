@@ -41,14 +41,68 @@ The running times of algorithms with recursive calls can be described using recu
 
 ## Repeated substitution
 
+```
+T (n)
+= 2T (n/2) + 2n + 3                  // Substitute
+= 2(2T (n/4) + n + 3) + 2n + 3       // Expand
+= 4T (n/4) + 4n + 9                  // Substitute
+= 4(2T(n/8) + n/2 + 3) + 4n + 9      // Expand
+=8T(n/8)+3·2n+(4+2+1)3               // Find Pattern
+```
+
+The pattern we see here is $2^iT(\frac{n}{2})+2in+3\sum_{i-1}^{j=0}2^j$ - to clarify, the i and j stand for the number of substituions done. In $8T(\frac{n}{2})+3·2n+(4+2+1)3$, $i$ and $j$ would be equal to 3. 
+
+We set the upper bound for $i$ to $log\,n$, insert this for $i$ and can then calculate the asymptotic bound for the function, which is $\Theta (n\log{}n)$.
+
 ## Substitution method
+
+```
+T (n)   = 4T (n/2) + n  (recurrence) 
+<= 4c(n/2)^3 + n         (inductive hyp.)
+= cn^3/2 + n            (simplification)
+= cn^3 − (cn^3/2 − n)   (rearrangement)
+<= cn3                   (for c >= 2, n >= 1)
+```
+
+We assume an inductive hypothesis, in this example we assume that $T(n) = n^3$. We then check if our hypothesis is true.
+
+\newpage
 
 ## Recursion trees
 
-## Master method
+We visualize the recursion tree to see what happens when the recurrence is iterated.
 
-### Case 1
+Example for $T(n) = T(n/4) + T(n/2) + n^2$
 
-### Case 2
+![](9c2912285f40fca5339449ac148db2f02df32db10bacd34a8aeeaf0fc97cdee4.png){ width=450px }
 
-### Case 3
+# Master method
+
+## Decreasing recurrences
+
+Few examples: 
+
+$T(n) = T(n-1) + 1 \rightarrow O(n)$
+
+$T(n) = T(n-1) + n \rightarrow O(n^2)$
+
+$T(n) = T(n-1) + log\,n \rightarrow O(n\,log\,n)$
+
+$T(n) = 2T(n-1) + 1 \rightarrow O(2^n)$
+
+$T(n) = 3T(n-1) + 1 \rightarrow O(3^n)$
+
+$T(n) = 2T(n-1) + n \rightarrow O(n\cdot2^n)$
+
+What we are seeing here, can be declared into a formula:
+
+$T(n) = a \cdot T(n-b) + f(n)$, where $a, b > 0$ and $f(n) = O(n^k), k\geq 0$
+
+Furthermore, we apply following rules:
+
+- $a < 1$ = $O(n^k) = O(f(n))$
+- $a = 1$ = $O(n^{k+1}) = O(n \cdot f(n))$
+- $a > 1$ = $O(n^k \cdot a^{\frac{n}{b}}) = O(f(n)\cdot a^{\frac{n}{b}})$
+
+## Case 1, 2 and 3
+![](23_03_2021_20.45.png)  
