@@ -113,4 +113,8 @@ The basic idea of Quicksort is chosing an element 'pivot', this element pivot al
 
 ## Lomuto partitioning
 
+![](14_04_2021_00.18.png){ width=450px }
+
+
 ## Hoare partitioning
+![](14_04_2021_00.18.png){ width=450px }
