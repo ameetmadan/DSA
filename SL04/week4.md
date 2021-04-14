@@ -113,8 +113,18 @@ The basic idea of Quicksort is chosing an element 'pivot', this element pivot al
 
 ## Lomuto partitioning
 
-![](14_04_2021_00.18.png){ width=450px }
+Here we work with pivot, the yellow part of the array is sorted, A[p..i] is smaller than x and A[i..j] is greater than x.
 
+![](14_04_2021_00.18.png){ width=450px }
 
 ## Hoare partitioning
+
+Hoare’s Partition Scheme works by initializing two indexes that start at two ends, the two indexes move toward each other until an inversion is (A smaller value on the left side and greater value on the right side) found. When an inversion is found, two values are swapped and the process is repeated.
+
 ![](14_04_2021_00.18.png){ width=450px }
+
+## Comparison of Lomuto vs. Hoare
+
+- Hoare’s scheme is more efficient than Lomuto’s partition scheme because it does three times fewer swaps on average, and it creates efficient partitions even when all values are equal.
+- Like Lomuto’s partition scheme, Hoare partitioning also causes Quick sort to degrade to O(n^2) when the input array is already sorted, it also doesn’t produce a stable sort.
+- Note that in this scheme, the pivot’s final location is not necessarily at the index that was returned, and the next two segments that the main algorithm recurs on are (lo..p) and (p+1..hi) as opposed to (lo..p-1) and (p+1..hi) as in Lomuto’s scheme.

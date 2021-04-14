@@ -48,3 +48,15 @@ SL03
 - [Master method](#master-method)
   - [Decreasing recurrences](#decreasing-recurrences)
   - [Case 1, 2 and 3](#case-1-2-and-3)
+
+SL04
+- [Heap sort](#heap-sort)
+  - [What is a binary tree?](#what-is-a-binary-tree)
+  - [How do you build a heap?](#how-do-you-build-a-heap)
+    - [Complete binary trees](#complete-binary-trees)
+    - [Nearly complete binary trees](#nearly-complete-binary-trees)
+  - [Heapify](#heapify)
+- [Quick sort](#quick-sort)
+  - [Lomuto partitioning](#lomuto-partitioning)
+  - [Hoare partitioning](#hoare-partitioning)
+  - [Comparison of Lomuto vs. Hoare](#comparison-of-lomuto-vs-hoare)
