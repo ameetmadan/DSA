@@ -220,4 +220,6 @@ int dequeue(){
 
 ### What is a ordered list?
 
+An ordered list can be considered as a sorted linked list. The sorting is done based on the key of an element, which tells us where the element's place is inside the list.
+
 ### How and when is a ordered list used in C?
