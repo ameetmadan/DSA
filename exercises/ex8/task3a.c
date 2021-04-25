@@ -1,8 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 struct TreeNode
 {
     int val;
-    struct TreeNode∗ left;
-    struct TreeNode∗ right;
+    int data;
+    struct TreeNode *left;
+    struct TreeNode *right;
 };
 
 void insert(struct TreeNode **root, int val)
@@ -16,12 +20,12 @@ void insert(struct TreeNode **root, int val)
         p->left = p->right = NULL; /* root init */
         root = p;
     }
-    while (t != NULL;)
+    while (t != NULL) /* this is what we do when the binary tree already has elements */
     {
         r = t;
-        if (val < t->data)
+        if (val < t->data) /* here we apply what happens when the value is smaller than root */
             t = t->left;
-        else if (val > t->data)
+        else if (val > t->data) /* same as above just when value is greater we go right*/
             t = t->right;
         else
             return;
@@ -29,7 +33,7 @@ void insert(struct TreeNode **root, int val)
     p = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     p->data = val;
     p->left = p->right = NULL;
-    if (key < r->data)
+    if (val < r->data)
         r->left = p;
     else
         r->right = p;
