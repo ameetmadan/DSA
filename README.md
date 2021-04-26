@@ -97,7 +97,7 @@ SL06
 - [Red-black trees](#red-black-trees)
   - [What is a red-black tree?](#what-is-a-red-black-tree)
   - [How and when is a red-black tree used?](#how-and-when-is-a-red-black-tree-used)
-    - [Insertion](#insertion-1)
+    - [Insertion](https://github.com/ameetmadan/DSA/blob/main/SL06/week6.md#insertion-1)
     - [Searching](#searching-1)
     - [Deletion](#deletion-1)
     - [Printing](#printing-1)
