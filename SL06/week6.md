@@ -1,5 +1,3 @@
-
-
 # Binary trees
 
 ## What is a binary tree?
