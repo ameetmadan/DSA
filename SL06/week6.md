@@ -59,13 +59,121 @@ To insert an element into a binary search tree, we first need to know if it's em
 
 ### Searching
 
+The task of searching in BST is also easier due to the property of the elements. While searching, if the found element is greater than what is searched, the algorithm should move further left. And on the other hand, when the found element is smaller than what is searched, move further right.
+
+```C
+void TreeSearchIterative(struct node* p,int value){
+    while(t != NULL && p->key != NULL){
+        if(v < p->key){
+            p = p->left;
+        } else {
+            p = p->right;
+        }
+    }
+    return p;
+}
+
+void TreeSearchRecurisve(struct node* p, int value){
+    if(p == NULL || p->key == value){
+        return p;
+    }
+
+    if(v < p->key){
+        return TreeSearchRecursive(p->left, value);
+    } else {
+        return TreeSearchRecursive(p>right, value);
+    }
+}
+```
+
 ### Deletion
+
+- Deletion case 1: Node $t$ has no children -> remove $t$
+- Deletion case 2: Node $t$ has one child $x$ -> let parent of $t$ point to $x$ and then remove t
+- Deletion case 3: Node $t$ has two children -> find largest (smallest) child $s$ in left (right) subtree of $t$, then replace $p→key$ with $s.key$ and remove $s$
+(often this is done by changing pointers (makes it independent of node content))
+
+```C
+/* Node x is a pointer to the node to be deleted */
+struct node* delete(struct node* root, struct node* x) {
+    u = root;
+    v = NULL;
+    
+    //we search x and the node above
+    while (u != x) {
+        v = u;
+        if (x->key < u->key) u = u->lft;
+        else u = u->rgt;
+    }
+
+    if (u->rgt == NULL) {
+        if (v == NULL) root = u->lft;
+        else if (v->lft == u) v->lft = u->lft; else v->rgt = u->lft;
+    } else if (u->lft == NULL) {
+        if (v == NULL) root = u->rgt;
+        else if (v->lft == u) v->lft = u->rgt;
+        else v->rgt = u->rgt;
+    } else {
+        p = x->lft;
+        q = p;
+        while (p->rgt != NULL) {
+            q = p;
+            p = p->rgt;
+        }
+
+        if (v == NULL) root = p;
+        else if (v->lft == u) v->lft = p;
+        else v->rgt = p;
+
+        p->rgt = u->rgt;
+        if (q != p) {
+            q->rgt = p->lft;
+            p->lft = u->lft;
+        }
+    }
+    return root
+```
 
 ### Printing
 
 ### Maximum and minimum
 
+Finding the minimum
+
+- Finds the minimum key in a tree rooted at p
+- Running time is proportional to height of tree
+- We do not have to compare keys.
+
+```C
+void TreeMin(struct node* p){
+    while(p->left != NULL){
+        p = p->left;
+    }
+    return p;
+}
+```
+
+Same principle for maximum, just on the other side:
+
+
+```C
+void TreeMin(struct node* p){
+    while(p->right != NULL){
+        p = p->right;
+    }
+    return p;
+}
+```
+
+
 ### Distance to root
+
+```C
+int heightBT(struct node* p){
+    if (p === NULL) return -1;
+    return max(heightBT(p->left), heightBT(p->right)) + 1;
+}
+```
 
 # Red-black trees
 
