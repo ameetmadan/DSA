@@ -179,16 +179,125 @@ int heightBT(struct node* p){
 
 ## What is a red-black tree?
 
-## How and when is a red-black tree used?
+Following conditions need to fulfilled for a valid red-black tree:
 
-### Insertion
+- Every node is either red or black (needs extra bit to store this information)
+- All leaves are black and have no values, so called nil pointers
+- Root is always black
+- A red node has black children, there can not be two consecutive red nodes
+- Depth of black pointers has to be same over all paths of the tree
+- The tree needs to be a valid BST
+
+This is an example of a valid red-black tree
+
+![](12_05_2021_21.37.png){ width=250px }
+
+### Balancing a red-black tree
+
+![](12_05_2021_21.40.png){ width=450px }
+
+When balancing a red-black tree, we have 2 options. Either a left-rotation or a right-rotation.
+
+Following condition must hold: nodes in A $\leq$ x $\leq$ nodes in B $\leq$ y $\leq$ nodes in C (see BST condition)
+
+![](12_05_2021_21.42.png){ width=450px }
+
+What we do in left-rotation is as first step, identify our elements $x$ and $y$. We also identify subtrees A, B and C. Then we rotate$x$ and $y$, send $y$ to the root and add the B subtree to our $x$.
+
+![](12_05_2021_21.43.png){ width=450px }
+
+What we do in right-rotation is as first step, identify our elements $x$ and $y$. We also identify subtrees A, B and C. Then we rotate$y$ and $x$, send $x$ to the root and add the B subtree to our $y$.
 
 ### Searching
 
+Searching in a red-black tree is exactly the same as in an elementary binary search tree (just ignore colour). Read-only operations are also identical (but they benefit from the fact that red-black trees are much better balanced).
+
+### Insertion
+
+#### Case 0: Black parent
+
+If the parent of the new node is Black and the tree was a valid RB-tree before insertion, no condition can be violated and there is nothing to do. This is a terminal case.
+
+#### Case 1: Red uncle
+
+1. Recolor Parent and Uncle in Black.
+2. Recolor the Grandparent in Red.
+3. If the Grandparent’s Parent is Red, there could be another violation of the red property. Therefore, propagate upwards in the tree (while treating the Grandparent as the newly inserted node, possibly until reaching the root)(in the end change root to black if necessary).
+4. Check all cases again.
+
+#### Case 2: Black uncle line
+
+Red property violated and the Uncle of the new node is Black; Grandparent, Parent and new node
+form a Triangle.
+
+1. Apply a Rotation on the Parent of the new node. The rotation should get Grandparent, Parent
+and new node into a Line configuration
+- Left Rotation is applied when the Triangle points to the Left.
+- Right Rotation is applied when the Triangle points to the Right.
+2. Consider the former Parent as the newly inserted node.(Do not swap them, but just shift the
+status of “new” to the former Parent.)
+3. Continue with Case 3
+
+#### Case 3: Black uncle triangle
+
+Red property violated and the Uncle of the new node is Black ; Grandparent, Parent and new node
+form a Straight Line.
+
+1. Recolor the Parent Black and recolor the Grandparent Red.
+2. Apply a Rotation on the Grandparent of the new node towards the opposite site the tree is
+currently leaning.
+
+- Left Rotation is applied when the new node is a Right child.(MIRROR)
+- Right Rotation is applied if the new node is a Left child.
+
+This is a terminal case.
+
+
 ### Deletion
 
-### Printing
+Before deletion find node to be deleted and copy to it the value from either the in order
+predecessor or successor. This successor or predecessor is now the new node to be deleted. If node
+to do be deleted is a leaf node. Don’t worry, consider it the node to be deleted.
 
-### Maximum and minimum
+REMEMBER! The standard case assumes the node to be deleted is a left child. If
+it is a right child, consider it a mirror case.
 
-### Distance to root
+#### Case 0: Red Node or Red Child
+
+In this case if the node to be deleted is red and has only null children, simply remove it. If it has a single child that is red, then recolour the child black and delete the node to be deleted.
+This is terminal case.
+
+#### Case 1: Red Brother
+In this case the depth property is violated and the node to be deleted’s brother is red. You must
+recolour the brother black and parent red. Then apply left rotation on parent.
+This is not a teminal case and you must continue to case 2, 3 or 4.
+
+##### Mirror case 1
+This applies if the node to be deleted is a right child. In this case perform the same recolouring and apply a right rotation on parent.
+This is not a teminal case and you must continue to case 2, 3 or 4.
+
+
+#### Case 2: All Black
+In this case the depth property is violated and the brother of the node to be deleted is black and has two black children. If parent also black: Make brother red and CONSIDER the parent as the new node to be deleted (i.e. search for cases again from the top!)
+
+Note: If new (considered) node to be deleted is the root and black, you are finished.
+If parent red: Exchange colours between parent and brother. This is a terminal case, you are done.
+
+
+#### Case 3: Black Brother, only! left nephew red
+In this case the node to be deleted has a black brother whose left child is red. You must recolour
+the left nephew black and the brother red. Then apply a right rotation to the brother.
+You must now proceed with case 4.
+
+##### Mirror case 3
+If the node to be deleted is a right child this case is applicable when the brother is black and it’s right child is red. You follow the same recolouring scheme but apply a left rotation to the brother instead. You must now proceed with case 4.
+
+
+#### Case 4: Black Brother, right or both nephews red
+In this case the node to be deleted has a black brother which has atleast a red right child. (The
+other child or parent’s colour is not important). You must recolour the brother in the colour of
+the parent and recolour the parent and right nephew black. Then perform a left rotation
+on the parent. Case 4 is a terminal case.
+
+##### Mirror case 4
+If the node to be delected is a right child this case is applicable when the brother is black and at least the left nephew is red. The recolouring procedure remains the same as in the standard case but instead we perfrom a right rotation on the parent. Case 4 is a terminal case.
