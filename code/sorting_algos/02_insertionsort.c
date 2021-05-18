@@ -1,40 +1,58 @@
-/* Copied from https://github.com/JeromeHadorn/UZH_CS_Bachelor_Neuroinformatics/ */
-
 #include <stdio.h>
 
-void insertionSort(int n, int array[])
+// Function to print an array
+void printArray(int array[], int size)
 {
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < size; i++)
     {
-
-        int j = i - 1;
-        int value = array[i];
-
-        while (j >= 0 && array[j] > value)
-        {
-            array[j + 1] = array[j];
-            j = j - 1;
-        }
-        array[j + 1] = value;
-    }
-}
-
-void printArray(int arr[], int size)
-{
-    int i;
-    for (i = 0; i < size; i++)
-    {
-        printf("%d ", arr[i]);
+        printf("%d ", array[i]);
     }
     printf("\n");
 }
 
+void insertionSortAscending(int array[], int size)
+{
+    for (int step = 1; step < size; step++)
+    {
+        int key = array[step];
+        int j = step - 1;
+
+        // Compare key with each element on the left of it until an element smaller than it is found.
+        while (key < array[j] && j >= 0)
+        {
+            array[j + 1] = array[j];
+            --j;
+        }
+        array[j + 1] = key;
+    }
+}
+
+void insertionSortDescending(int array[], int size)
+{
+    for (int step = 1; step < size; step++)
+    {
+        int key = array[step];
+        int j = step - 1;
+
+        // Compare key with each element on the left of it until an element smaller than it is found.
+        while (key > array[j] && j >= 0)
+        {
+            array[j + 1] = array[j];
+            --j;
+        }
+        array[j + 1] = key;
+    }
+}
+
+// Driver code
 int main()
 {
-    int arr[] = {100, 64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    insertionSort(n, arr);
-    printf("Sorted array: \n");
-    printArray(arr, n);
-    return 0;
+    int data[] = {9, 5, 1, 4, 3};
+    int size = sizeof(data) / sizeof(data[0]);
+    insertionSortAscending(data, size);
+    printf("Sorted array in ascending order:\n");
+    printArray(data, size);
+    insertionSortDescending(data, size);
+    printf("Sorted array in descending order:\n");
+    printArray(data, size);
 }

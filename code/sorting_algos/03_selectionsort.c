@@ -1,64 +1,65 @@
-/* Copied from https://github.com/JeromeHadorn/UZH_CS_Bachelor_Neuroinformatics/ */
 #include <stdio.h>
 
-void printArray(int arr[], int size)
+// function to swap the the position of two elements
+void swap(int *a, int *b)
 {
-    int i;
-    for (i = 0; i < size; i++)
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void selectionSortAscending(int array[], int size)
+{
+    for (int step = 0; step < size - 1; step++)
     {
-        printf("%d ", arr[i]);
+        int min_idx = step;
+        for (int i = step + 1; i < size; i++)
+        {
+            // Select the minimum element in each loop.
+            if (array[i] < array[min_idx])
+                min_idx = i;
+        }
+
+        // put min at the correct position
+        swap(&array[min_idx], &array[step]);
+    }
+}
+
+void selectionSortDescending(int array[], int size)
+{
+    for (int step = 0; step < size - 1; step++)
+    {
+        int min_idx = step;
+        for (int i = step + 1; i < size; i++)
+        {
+            // Select the minimum element in each loop.
+            if (array[i] > array[min_idx])
+                min_idx = i;
+        }
+        // put min at the correct position
+        swap(&array[min_idx], &array[step]);
+    }
+}
+
+// function to print an array
+void printArray(int array[], int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        printf("%d  ", array[i]);
     }
     printf("\n");
 }
 
-void selectionSort(int n, int array[])
-{
-    int k;
-    for (int i = 0; i < n - 1; i++)
-    {
-        k = i;
-        for (int j = i + 1; j < n; j++)
-        {
-            if (array[j] < array[k])
-            {
-                k = j;
-            }
-        }
-        // Possible improvement only if i != k
-        // exchange i and k element
-        int t = array[i];
-        array[i] = array[k];
-        array[k] = t;
-    }
-}
-
-void selectionSort2(int n, int array[])
-{
-    int k;
-    for (int i = n - 1; i > 1; i--)
-    {
-        k = i;
-        for (int j = i - 1; j >= 0; j--)
-        {
-            if (array[j] > array[k])
-            {
-                k = j;
-            }
-        }
-        // Possible improvement only if i != k
-        // exchange i and k element
-        int t = array[k];
-        array[k] = array[i];
-        array[i] = t;
-    }
-}
-
+// driver code
 int main()
 {
-    int arr[] = {100, 64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    selectionSort2(n, arr);
-    printf("Sorted array: \n");
-    printArray(arr, n);
-    return 0;
+    int data[] = {20, 12, 10, 15, 2};
+    int size = sizeof(data) / sizeof(data[0]);
+    selectionSortAscending(data, size);
+    printf("Sorted array in Acsending Order:\n");
+    printArray(data, size);
+    selectionSortDescending(data, size);
+    printf("Sorted array in Descending Order:\n");
+    printArray(data, size);
 }
