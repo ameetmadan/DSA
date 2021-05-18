@@ -10,9 +10,11 @@ void swap(int *a, int *b)
 
 void selectionSortAscending(int array[], int size)
 {
+    // One by one move boundary of unsorted subarray
     for (int step = 0; step < size - 1; step++)
     {
         int min_idx = step;
+        // Find the minimum element in unsorted array
         for (int i = step + 1; i < size; i++)
         {
             // Select the minimum element in each loop.

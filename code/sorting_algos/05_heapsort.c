@@ -1,126 +1,69 @@
+// Heap Sort in C
+
 #include <stdio.h>
 
-void swap(int A[], int start, int end);
-void heapSort(int A[], int length);
-void heapify(int A[], int current_node, int length, int ascending);
-void min_heapify(int A[], int i, int n);
-void max_heapify(int A[], int i, int n);
-void buildHeap(int A[], int length);
-int lchild(int i);
-int rchild(int i);
-
-void heapSort(int A[], int length)
+// Function to swap the the position of two elements
+void swap(int *a, int *b)
 {
-    // transform the input array into a valid heap
-    buildHeap(A, length);
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
-    int last_node_still_in_heap = length;
-    int i;
-    for (i = length - 1; i > 0; i--)
+void heapify(int arr[], int n, int i)
+{
+    // Find largest among root, left child and right child
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+
+    // Swap and continue heapifying if root is not largest
+    if (largest != i)
     {
-        swap(A, i, 0);
-        last_node_still_in_heap--;
-        heapify(A, 0, last_node_still_in_heap, 0);
+        swap(&arr[i], &arr[largest]);
+        heapify(arr, n, largest);
     }
 }
 
-void buildHeap(int A[], int length)
+// Main function to do heap sort
+void heapSort(int arr[], int n)
 {
-    int i;
-    for (i = length / 2; i >= 0; i--)
+    // Build max heap
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // Heap sort
+    for (int i = n - 1; i >= 0; i--)
     {
-        heapify(A, i, length, 0);
+        swap(&arr[0], &arr[i]);
+
+        // Heapify root element to get highest element at root again
+        heapify(arr, i, 0);
     }
 }
 
-void heapify(int A[], int current_node, int length, int ascending)
+// Print an array
+void printArray(int arr[], int n)
 {
-    if (ascending == 1)
-    {
-        min_heapify(A, current_node, length);
-    }
-    else
-    {
-        max_heapify(A, current_node, length);
-    }
-}
-
-void min_heapify(int A[], int i, int n)
-{
-    int min = i;
-    int l = lchild(i);
-    int r = rchild(i);
-
-    if (l < n && A[l] < A[min])
-    {
-        min = l;
-    }
-    if (r < n && A[r] < A[min])
-    {
-        min = r;
-    }
-
-    if (min != i)
-    {
-        swap(A, i, min);
-        heapify(A, min, n, 0);
-    }
-}
-
-void max_heapify(int A[], int i, int n)
-{
-    int max = i;
-    int l = lchild(i);
-    int r = rchild(i);
-
-    if (l < n && A[l] > A[max])
-    {
-        max = l;
-    }
-    if (r < n && A[r] > A[max])
-    {
-        max = r;
-    }
-
-    if (max != i)
-    {
-        swap(A, i, max);
-        heapify(A, max, n, 0);
-    }
-}
-
-void swap(int A[], int start, int end)
-{
-    int tmp;
-    tmp = A[start];
-    A[start] = A[end];
-    A[end] = tmp;
-}
-
-void printArray(int A[], int length)
-{
-    for (int i = 0; i < length - 1; i++)
-    {
-        printf("%d ", A[i]);
-    }
+    for (int i = 0; i < n; ++i)
+        printf("%d ", arr[i]);
     printf("\n");
 }
 
-int lchild(int i)
-{
-    return 2 * i + 1;
-}
-
-int rchild(int i)
-{
-    return 2 * i + 2;
-}
-
+// Driver code
 int main()
 {
-    int A[] = {11, 3, 73, 21, 99, 1000, 1002, 3, 1, 23};
-    int n = sizeof A / sizeof *A;
-    heapSort(A, n);
-    printArray(A, n);
-    return 0;
+    int arr[] = {1, 12, 9, 5, 6, 10};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    heapSort(arr, n);
+
+    printf("Sorted array is \n");
+    printArray(arr, n);
 }

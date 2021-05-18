@@ -34,35 +34,37 @@
 
 \pagebreak
 
-|                        | Selection sort |
-| ---------------------- | -------------- |
-| Data input             |                |
-| Sorting variations     |                |
-| First loop             |                |
-| Second loop            |                |
-| Conditions             |                |
-| Data output            |                |
-| Ascending              |                |
-| Descending             |                |
-| Algorithmic complexity | $O(n^2)$       |
-| Special cases          |                |
+|                        | Selection sort                          |
+| ---------------------- | --------------------------------------- |
+| Data input             | Unsorted array                          |
+| Sorting variations     | Ascending und descending                |
+| First loop             | Iterate through array                   |
+| Second loop            | Find minimum element                    |
+| Conditions             | Selection & swapping of minimum element |
+| Data output            | Sorted array                            |
+| Ascending              | Smallest element to the first position  |
+| Descending             |                                         |
+| Algorithmic complexity | $O(n^2)$                                |
+| Special cases          |                                         |
 
 ![](18_05_2021_10.39.png){ width=250px }
 
 \pagebreak
 
-|                        | Merge sort |
-| ---------------------- | ---------- |
-| Data input             |            |
-| Sorting variations     |            |
-| First loop             |            |
-| Second loop            |            |
-| Conditions             |            |
-| Data output            |            |
-| Ascending              |            |
-| Descending             |            |
-| Algorithmic complexity |            |
-| Special cases          |            |
+|                        | Merge sort                   |
+| ---------------------- | ---------------------------- |
+| Data input             | An array split in sub-arrays |
+| Sorting variations     | Ascending and descending     |
+| First loop             | Split array into two parts   |
+| Second loop            | Sort parts indivdiually      |
+| Conditions             |                              |
+| Data output            | Sorted array                 |
+| Ascending              |                              |
+| Descending             |                              |
+| Algorithmic complexity | $O(n*log \ n)$               |
+| Special cases          |                              |
+
+![](18_05_2021_14.04.png){ width=250px }
 
 \pagebreak
 

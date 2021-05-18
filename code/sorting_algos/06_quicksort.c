@@ -1,91 +1,110 @@
-/* Copied from https://github.com/JeromeHadorn/UZH_CS_Bachelor_Neuroinformatics/ */
+// Quick sort in C
 
 #include <stdio.h>
 
-void swap(int *x, int *y)
+// function to swap elements
+void swap(int *a, int *b)
 {
-    int temp = *x;
-    *x = *y;
-    *y = temp;
+    int t = *a;
+    *a = *b;
+    *b = t;
 }
 
-void QuickSort(int A[], int n, int l, int r)
+// function to find the partition position
+int partition(int array[], int low, int high)
 {
-    if (l < r)
+
+    // select the rightmost element as pivot
+    int pivot = array[high];
+
+    // pointer for greater element
+    int i = (low - 1);
+
+    // traverse each element of the array
+    // compare them with the pivot
+    for (int j = low; j < high; j++)
     {
-        int m = LomutoPartition(A, n, l, r); // || HoarePartition(A, n, l, r);
-        QuickSort(A, n, l, m - 1);           // smallest Elements
-        QuickSort(A, n, m + 1, r);           // largest Elements
-
-        // Important no Merge needed at the end
-    }
-}
-
-int LomutoPartition(int A[], int n, int l, int r)
-{
-    // pivot (Element to be placed at right position)
-    int pivot = A[r]; // middle element (pivot) (we take rightmost element as middle element)
-    int i = l - 1;
-    for (int j = l; j < r - 1; j++)
-    { // elements l..r-1 are inserted into either the smaller or larger part
-
-        // If current element is smaller than the pivot
-        if (A[j] < pivot)
+        if (array[j] <= pivot)
         {
-            i = i + 1; // increment index of smaller element
-            swap(A[i], A[j]);
+
+            // if element smaller than pivot is found
+            // swap it with the greater element pointed by i
+            i++;
+
+            // swap element at i with element at j
+            swap(&array[i], &array[j]);
         }
-        printf("%d, %d %d", i, j, pivot);
     }
-    swap(A[i + 1], A[r]);
-    return i + 1;
+
+    // swap the pivot element with the greater element at i
+    swap(&array[i + 1], &array[high]);
+
+    // return the partition point
+    return (i + 1);
 }
 
-int HoarePartition(int A[], int n, int l, int r)
+void quickSort(int array[], int low, int high)
 {
-    int p = A[(l + r) / 2];
-    int i = l - 1;
-    int j = r + 1;
-    while (1 == 1)
+    if (low < high)
     {
-        do
-        {
-            i++; // searches in the left part for a wrong (too large) element
-        } while (A[i] < p);
 
-        do
-        {
-            j--; // searches in the right part for a wrong (too small) element
-        } while (A[j] > p);
+        // find the pivot element such that
+        // elements smaller than pivot are on left of pivot
+        // elements greater than pivot are on right of pivot
+        int pi = partition(array, low, high);
 
-        if (i >= j)
-        {
-            return j;
-        }
-        else
-        {
-            swap(&A[i], &A[j]); // Swap of "wrong" elements
-        }
+        // recursive call on the left of pivot
+        quickSort(array, low, pi - 1);
+
+        // recursive call on the right of pivot
+        quickSort(array, pi + 1, high);
     }
-    // int x = A[r];
-    // int i = l - 1;
-    // while (true)
-    // {
-    //     repeat j = j - 1 until A[j] < x; // searches in the right part for a wrong (too small) element
-    //     repeat i = i + 1 until A[i] > x; // searches int he left part for a wrong (too large) element
-    //     if (i < j)
-    //     {
-    //         swap(A[i], A[j]); // Swap of "wrong" elements
-    //     }
-    //     else
-    //     {
-    //         return i;
-    //     }
-    // }
 }
 
+void quickSort2(int array[], int low, int high)
+{
+    if (low < high)
+    {
+
+        // find the pivot element such that
+        // elements smaller than pivot are on left of pivot
+        // elements greater than pivot are on right of pivot
+        int pi = partition(array, low, high);
+
+        // recursive call on the left of pivot
+        quickSort(array, low, pi - 1);
+
+        // recursive call on the right of pivot
+        quickSort(array, pi + 1, high);
+    }
+}
+
+// function to print array elements
+void printArray(int array[], int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        printf("%d  ", array[i]);
+    }
+    printf("\n");
+}
+
+// main function
 int main()
 {
-    int A = {7, 8, 2, 6, 5, 1, 3};
-    QuickSort(A, 7, 0, 6);
+    int data[] = {8, 7, 2, 1, 0, 9, 6};
+
+    int n = sizeof(data) / sizeof(data[0]);
+
+    printf("Unsorted Array\n");
+    printArray(data, n);
+
+    // perform quicksort on data
+    quickSort(data, 0, n - 1);
+    printf("Sorted array in ascending order: \n");
+    printArray(data, n);
+
+    quickSort2(data, 0, n - 1);
+    printf("Sorted array in ascending order: \n");
+    printArray(data, n);
 }
