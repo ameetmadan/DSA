@@ -38,6 +38,36 @@ void insertAfter(struct Node *node, int data)
     node->next = new_node;
 }
 
+<<<<<<< HEAD
+// Insert a new node at specific position
+void SinglyLinkedListNode *insertNodeAtPosition(SinglyLinkedListNode *head, int data, int position)
+{
+    SinglyLinkedListNode *node = (SinglyLinkedListNode *)malloc(sizeof(SinglyLinkedListNode));
+    node->data = data;
+    if (!head)
+        return node;
+
+    SinglyLinkedListNode *temp = head;
+    SinglyLinkedListNode *prev_node;
+    int pos = 0;
+
+    while (temp != NULL)
+    {
+        if (pos == position)
+            break;
+        prev_node = temp;
+        temp = temp->next;
+        pos++;
+    }
+
+    prev_node->next = node;
+    node->next = temp;
+
+    return head;
+}
+
+=======
+>>>>>>> 7294b7af3638141fc3348e24c1765349684abd0b
 void insertAtEnd(struct Node **ref, int data)
 {
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
@@ -86,6 +116,29 @@ void deleteNode(struct Node **ref, int key)
     free(temp);
 }
 
+<<<<<<< HEAD
+// Reverse linked list
+SinglyLinkedListNode *reverse(SinglyLinkedListNode *head)
+{
+    if (!head)
+        return head;
+    SinglyLinkedListNode *prev = head;
+    SinglyLinkedListNode *current = head->next;
+    head->next = NULL;
+
+    while (current)
+    {
+        SinglyLinkedListNode *next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    return prev;
+}
+
+=======
+>>>>>>> 7294b7af3638141fc3348e24c1765349684abd0b
 // Print the linked list
 void printList(struct Node *node)
 {
