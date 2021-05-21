@@ -38,7 +38,6 @@ void insertAfter(struct Node *node, int data)
     node->next = new_node;
 }
 
-<<<<<<< HEAD
 // Insert a new node at specific position
 void SinglyLinkedListNode *insertNodeAtPosition(SinglyLinkedListNode *head, int data, int position)
 {
@@ -66,8 +65,6 @@ void SinglyLinkedListNode *insertNodeAtPosition(SinglyLinkedListNode *head, int 
     return head;
 }
 
-=======
->>>>>>> 7294b7af3638141fc3348e24c1765349684abd0b
 void insertAtEnd(struct Node **ref, int data)
 {
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
@@ -116,29 +113,6 @@ void deleteNode(struct Node **ref, int key)
     free(temp);
 }
 
-<<<<<<< HEAD
-// Reverse linked list
-SinglyLinkedListNode *reverse(SinglyLinkedListNode *head)
-{
-    if (!head)
-        return head;
-    SinglyLinkedListNode *prev = head;
-    SinglyLinkedListNode *current = head->next;
-    head->next = NULL;
-
-    while (current)
-    {
-        SinglyLinkedListNode *next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
-
-    return prev;
-}
-
-=======
->>>>>>> 7294b7af3638141fc3348e24c1765349684abd0b
 // Print the linked list
 void printList(struct Node *node)
 {
@@ -146,6 +120,36 @@ void printList(struct Node *node)
     {
         printf(" %d ", node->item);
         node = node->next;
+    }
+}
+
+// rotate elements inside a linked list
+void rotateList1(int m)
+{
+    int i;
+    int n;
+    struct list∗ previous;
+    struct list∗ current;
+    current = head;
+    n = 0;
+    while (current != NULL)
+    {
+        n++;
+        current = current−> next;
+    }
+    m = m % n;
+    for (i = 0; i < m; i++)
+    {
+        current = head;
+        while (current−> next != NULL)
+        {
+            previous = current;
+            current = current−> next;
+        }
+        tail−> next = head;
+        tail = previous;
+        head = previous−> next;
+        previous−> next = NULL;
     }
 }
 
