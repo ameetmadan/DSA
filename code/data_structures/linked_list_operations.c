@@ -39,32 +39,22 @@ void insertAfter(struct Node *node, int data)
 }
 
 // Insert a new node at specific position
-void SinglyLinkedListNode *insertNodeAtPosition(SinglyLinkedListNode *head, int data, int position)
+void append(struct list *listA, int val)
 {
-    SinglyLinkedListNode *node = (SinglyLinkedListNode *)malloc(sizeof(SinglyLinkedListNode));
-    node->data = data;
-    if (!head)
-        return node;
-
-    SinglyLinkedListNode *temp = head;
-    SinglyLinkedListNode *prev_node;
-    int pos = 0;
-
-    while (temp != NULL)
+    struct node *curr;
+    struct node *new = malloc(sizeof(struct node));
+    new->val = val;
+    new->next = NULL;
+    if (listA->head == NULL)
+        listA->head = new;
+    else
     {
-        if (pos == position)
-            break;
-        prev_node = temp;
-        temp = temp->next;
-        pos++;
+        curr = listA->head;
+        while (curr->next != NULL)
+            curr = curr->next;
+        curr->next = new;
     }
-
-    prev_node->next = node;
-    node->next = temp;
-
-    return head;
 }
-
 void insertAtEnd(struct Node **ref, int data)
 {
     struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
@@ -128,28 +118,28 @@ void rotateList1(int m)
 {
     int i;
     int n;
-    struct list∗ previous;
-    struct list∗ current;
+    struct list *previous;
+    struct list *current;
     current = head;
     n = 0;
     while (current != NULL)
     {
         n++;
-        current = current−> next;
+        current = current->next;
     }
     m = m % n;
     for (i = 0; i < m; i++)
     {
         current = head;
-        while (current−> next != NULL)
+        while (current->next != NULL)
         {
             previous = current;
-            current = current−> next;
+            current = current->next;
         }
-        tail−> next = head;
+        tail->next = head;
         tail = previous;
-        head = previous−> next;
-        previous−> next = NULL;
+        head = previous->next;
+        previous->next = NULL;
     }
 }
 
@@ -170,4 +160,6 @@ int main()
     printf("\nAfter deleting an element: ");
     deleteNode(&head, 3);
     printList(head);
+
+    rotateList1(5);
 }
