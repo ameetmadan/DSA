@@ -113,6 +113,9 @@ void printList(struct Node *node)
     }
 }
 
+struct list *head;
+struct list *tail;
+
 // rotate elements inside a linked list
 void rotateList1(int m)
 {
@@ -140,6 +143,28 @@ void rotateList1(int m)
         tail = previous;
         head = previous->next;
         previous->next = NULL;
+    }
+}
+
+void rotateList2(int m)
+{
+    int i;
+    int n;
+    struct list∗ current;
+    current = head;
+    n = 0;
+    while (current != NULL)
+    {
+        n++;
+        current = current−> next;
+    }
+    m = m % n;
+    for (i = 0; i < m; i++)
+    {
+        tail−> next = head;
+        tail = head;
+        head = head−> next;
+        tail−> next = NULL;
     }
 }
 
